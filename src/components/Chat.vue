@@ -13,16 +13,21 @@
         </ul>
       </div>
       <div class="card-action">
-        <!-- チャット送信用のフォームをコンポーネントで表示 -->
-        <input type="text">
+        <!-- チャット送信用のフォームをコンポーネントで表示、属性で変数nameを子コンポーネントへ渡す -->
+        <NewMessage :name="name"/>
       </div>
     </div>
   </div>
 </template>
 <script>
+import NewMessage from "@/components/NewMessage";
+
 export default {
   name: "Chat",
   props: ["name"],
+  components: {
+    NewMessage
+  },
   data() {
     return {};
   }
