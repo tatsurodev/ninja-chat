@@ -16,7 +16,21 @@ export default new Router({
       name: 'Chat',
       component: Chat,
       // Welcomeから変数受取のため
-      props: true
+      props: true,
+      // Route Guards
+      beforeEnter: (to, from, next) => {
+        // console.log(to.params.name)
+        // ページ元にname変数があれば
+        if (to.params.name) {
+          // 次の指定したコンポーネントへ
+          next()
+        } else {
+          next({
+            // リダイレクトしたいページ先のコンポーネント
+            name: 'Welcome'
+          })
+        }
+      }
     }
   ]
 })
