@@ -3,9 +3,10 @@
     <div class="card">
       <div class="card-content center-align">
         <h2 class="teal-text">Welcome</h2>
-        <form @submit.prevent="enterCaht">
+        <form @submit.prevent="enterChat">
           <label for="name">Enter your name</label>
           <input type="text" name="name" v-model="name">
+          <p if="feedback" class="red-text">{{ feedback }}</p>
           <button class="btn teal">Enter Chat</button>
         </form>
       </div>
@@ -18,12 +19,18 @@ export default {
   name: "Welcome",
   data() {
     return {
-      name: null
+      name: null,
+      feedback: null
     };
   },
   methods: {
-    renterChat() {
-      console.log(this.name);
+    enterChat() {
+      if (this.name) {
+        // paramsでリダイレクト先に渡したい変数名と値を指定、あとはルーターで変数受取のためのprops設定をすること
+        this.$router.push({ name: "Chat", params: { name: this.name } });
+      } else {
+        this.feedback = "You must enter a name to join.";
+      }
     }
   }
 };
