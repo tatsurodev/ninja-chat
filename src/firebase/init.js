@@ -1,7 +1,7 @@
 // firebaseインポート
 import firebase from 'firebase'
 // firestoreメソッド使用のため
-import firestore from 'firebase/firebase-firestore'
+import firestore from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
